@@ -1,7 +1,7 @@
 export HF_ENDPOINT=https://hf-mirror.com
 export HF_HOME="/data/dwc/.cache/huggingface/"
 
-export CUDA_VISIBLE_DEVICES=2,3
+export CUDA_VISIBLE_DEVICES=0
 
 MODEL_PATH="/data/pretrain_model/"
 MODEL_NAME="Meta-Llama-3-8B-Instruct/"
@@ -27,6 +27,3 @@ python evaluation/molecule/text_translation_metrics.py --model_name ${MODEL_NAME
 # Modify Reg in metrics() in evaluate.py for task 'property_pred'
 # Modify selfies-smiles trans in evaluate.py
 # nltk_data in /data/miniconda3/envs/LM/
-
-### Biotext ###
-# Todo......

@@ -1,3 +1,6 @@
+export MKL_THREADING_LAYER=GNU
+export MKL_SERVICE_FORCE_INTEL=1
+
 export CUDA_VISIBLE_DEVICES=0
 
 python run.py \

@@ -28,24 +28,3 @@ python compute_metrics.py --prediction_dir eval/${MODEL_NAME}/prediction --load_
 # Modify torch_dtype for "triu_tril_cuda_template" not implemented for 'BFloat16' in model.py
 # Modify prompter in generation.py
 # !!! Modify cache_dir in load_dataset() in generate_on_dataset.py and compute_metrics.py
-
-
-# model.config.pad_token_id = tokenizer.pad_token_id; model.config.bos_token_id = tokenizer.bos_token_id; model.config.eos_token_id = tokenizer.eos_token_id
-# inputs = tokenizer(prompt, truncation=False, padding=False, return_tensors="pt", add_special_tokens=False,); input_ids = inputs["input_ids"].to(device)
-# generation_config = GenerationConfig(pad_token_id=model.config.pad_token_id, bos_token_id=model.config.bos_token_id, eos_token_id=model.config.eos_token_id, num_beams=8, num_return_sequences=5, max_input_tokens=512, max_new_tokens=128)
-# generation_config = GenerationConfig(pad_token_id=model.config.pad_token_id, bos_token_id=model.config.bos_token_id, eos_token_id=[model.config.eos_token_id, 128001], num_beams=8, num_return_sequences=5, max_input_tokens=512, max_new_tokens=128)
-# generation_config = GenerationConfig(pad_token_id=model.config.pad_token_id, bos_token_id=model.config.bos_token_id, eos_token_id=128001, num_beams=8, num_return_sequences=5, max_input_tokens=512, max_new_tokens=128)
-# generation_config = GenerationConfig(early_stopping=True, stop_strings=['<|end_of_text|>', '<|eot_id|>'], pad_token_id=model.config.pad_token_id, bos_token_id=model.config.bos_token_id, eos_token_id=model.config.eos_token_id, num_beams=8, num_return_sequences=5, max_input_tokens=512, max_new_tokens=128)
-# generation_output = model.generate(
-#                 input_ids=input_ids,
-#                 generation_config=generation_config,
-#                 return_dict_in_generate=True,
-#                 output_scores=True,
-#                 max_new_tokens=128,
-#             )
-# s = generation_output.sequences
-# output = tokenizer.batch_decode(s, skip_special_tokens=False)
-# output_text = []
-# for output_item in output:
-#     text = output_item.split("### Response:")[-1].strip()
-#     output_text.append(text)
