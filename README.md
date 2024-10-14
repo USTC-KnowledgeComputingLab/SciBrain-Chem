@@ -9,6 +9,12 @@ For certain complex testing tasks, we modified part of the code for better evalu
   - Llama3-KALE-LM-Chem-8B: [https://huggingface.co/USTC-KnowledgeComputingLab/Llama3-KALE-LM-Chem-8B](https://huggingface.co/USTC-KnowledgeComputingLab/Llama3-KALE-LM-Chem-8B)
   - Llama3-KALE-LM-Chem-1.5-8B: [https://huggingface.co/USTC-KnowledgeComputingLab/Llama3-KALE-LM-Chem-1.5-8B](https://huggingface.co/USTC-KnowledgeComputingLab/Llama3-KALE-LM-Chem-1.5-8B)
 
+## Eval In The Filed Of Electrolyte
+
+AI for Electrolyte is gaining increasing attention. 
+To evaluate the performance of large models in the field of electrolyte, we collaborated with chemists to build a small-scale test set and compared the performance of our model with other models on this test set. 
+The test data and testing code have been made open source.
+
 ## Cite Our Work
 
 ```text
