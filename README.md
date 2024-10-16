@@ -14,6 +14,10 @@ For certain complex testing tasks, we modified part of the code for better evalu
 AI for Electrolyte is gaining increasing attention. 
 To evaluate the performance of large models in the field of electrolyte, we collaborated with chemists to build a small-scale test set and compared the performance of our model with other models on this test set. 
 The test data and testing code have been made open source.
+- 1.jsonl for Molecular Property
+- 2.jsonl for Electrolyte Formula
+- 3.jsonl for Text Understanding
+- 4.jsonl for College Battery QA
 
 ## Cite Our Work
 
