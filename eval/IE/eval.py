@@ -16,7 +16,6 @@ def readfiles(infile):
 
     return lines
 
-
 def levenshtein_similarity(truth: List[str], pred: List[str]) -> float:
     assert len(truth) == len(pred)
     scores = sum(textdistance.levenshtein.normalized_similarity(str(t), str(p)) for t, p in zip(truth, pred))
@@ -25,10 +24,11 @@ def levenshtein_similarity(truth: List[str], pred: List[str]) -> float:
 
 def full_sentence_accuracy(truth: List[str], pred: List[str]) -> float:
     """Calculate the number of exact matches."""
+    print(len(truth))
+    print(len(pred))
     assert len(truth) == len(pred)
     correct_count = sum(int(t == p) for t, p in zip(truth, pred))
     return correct_count / len(truth)
-
 
 def accuracy(columns,data_mapping):
     print(data_mapping.keys())
@@ -85,6 +85,7 @@ def tAccuracyScores(testData,predictData):
     successCase8 = 0
     for i,testdata in enumerate(testData):
         yy = testdata.keys()
+        # yy.remove('battery_electrolyte')
         for key in yy:
             try:
                 flag8 = 0
@@ -100,22 +101,17 @@ def tAccuracyScores(testData,predictData):
     
     return {"0.9": successCase9/len(testData),"0.8": successCase8/len(testData)}
 
-
 if __name__ == "__main__":
 
     # accuracy & levenshtein_similarity
 
-    res_path = "/your/path/to/response"
-    gt_path = "/your/path/to/ground_truth"
-
-    testData = readfiles(gt_path)
-    predictData = readfiles(res_path)
-    # testDataList = [json.loads(jsonData) for jsonData in testData]
-    # predictDataList = [json.loads(jsonData) for jsonData in predictData]
+    testData = readfiles("")#test data path
+    predictData = readfiles("")#result path
     testDataList = testData
     predictDataList = predictData
 
     columns = list(set().union(*testDataList))
+
     df_ground = pd.DataFrame(testDataList)
     df_ground = df_ground[columns]
     df_prediction = pd.DataFrame(predictDataList)
@@ -138,7 +134,6 @@ if __name__ == "__main__":
         globals()[f"prediction_{col.replace(' ', '_')}"] = lst
         data_mapping[f"prediction_{col.replace(' ', '_')}"] = lst
 
-
     score_1 = accuracy(columns,data_mapping)
 
     score_2 = tlevenshtein_similarity(columns,data_mapping)
@@ -146,5 +141,6 @@ if __name__ == "__main__":
     # total accuracy
     score_t = tAccuracyScores(testData,predictData)
 
-    with open("scores_of_your_model.txt","w",encoding='utf-8') as f:
+    output_path = " "#output path
+    with open(output_path,"w",encoding='utf-8') as f:
         f.write(str(score_1) + "\n" + str(score_2) + "\n" + str(score_t))
